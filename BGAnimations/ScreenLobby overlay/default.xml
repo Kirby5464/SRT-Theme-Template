@@ -1,0 +1,177 @@
+<ActorFrame><children>
+	
+	<Layer
+		Type = "ActorSound"
+		File = "stg1.ogg"
+		InitCommand="%function(self)
+			--if ActualRound == 1 then
+				self:start();
+			--end
+		end"
+	/>
+	<!--
+	<Layer
+		Type = "ActorSound"
+		File = "stg2.ogg"
+		InitCommand="%function(self)
+			if ActualRound == 2 then
+				self:start();
+			end
+		end"
+	/>
+	
+	<Layer
+		Type = "ActorSound"
+		File = "stg3.ogg"
+		InitCommand="%function(self)
+			if ActualRound == 3 then
+				self:start();
+			end
+		end"
+	/>
+	
+	<Layer
+		Type = "ActorSound"
+		File = "stg4.ogg"
+		InitCommand="%function(self)
+			if ActualRound == 4 then
+				self:start();
+			end
+		end"
+	/>
+	
+	<Layer
+		Type = "ActorSound"
+		File = "stg5.ogg"
+		InitCommand="%function(self)
+			if ActualRound == 5 then
+				self:start();
+			end
+		end"
+	/>
+	-->
+	<Layer
+		Type = "ActorFrame"
+		InitCommand="%function(self)
+			function Arrange(self)
+				table.sort(Rankings, compare)
+			end
+
+			function compare(a, b)    
+				if tonumber(a) > tonumber(b) then    
+					return true    
+				end
+			end
+		end"
+	/>
+	
+	<Layer
+		File = "_bell gothic std black 20px"
+		Type = "BitmapText"
+		OnCommand = "%function(self)
+			local percent = ((table.getn(Rankings))*100)/PlayerMax;
+
+            if percent > 100 then
+                percent = 100;
+            end
+            self:x(SCREEN_WIDTH/4);
+            self:y(SCREEN_HEIGHT/4);
+            -- self:settext('Stage is '..percent..'% before completion.');
+            self:settext('Stage '..ActualRound..'');
+        end"
+	/>
+	
+	<Layer
+		File = "_bell gothic std black 20px"
+		Type = "BitmapText"
+		OnCommand = "%function(self)
+            self:x(SCREEN_LEFT+10);
+			self:y(45);
+			self:horizalign('left');
+			self:playcommand('Set');
+        end"
+		SetCommand="%function(self)
+			self:settext(MonthToString(MonthOfYear())..' / '..DayOfMonth()..' / '..Year());
+		end"
+	/>
+	
+	<Layer
+		File = "_bell gothic std black 20px"
+		Type = "BitmapText"
+		OnCommand = "%function(self)
+            self:x(SCREEN_LEFT+10);
+			self:y(75);
+			self:horizalign('left');
+			self:playcommand('Set');
+        end"
+		SetCommand="%function(self)
+			self:settext(string.format('%02i:%02i:%02i', Hour(), Minute(), Second()));
+			self:queuecommand('Repeat');
+		end"
+		RepeatCommand="%function(self)
+			self:sleep(1);
+			self:playcommand('Set');
+		end"
+	/>
+	
+	<Layer
+		Type = "Quad"
+		OnCommand="x,SCREEN_RIGHT;y,SCREEN_CENTER_Y;horizalign,right;diffusecolor,1,1,1,1;diffusealpha,0.25;zoomto,SCREEN_WIDTH/3,SCREEN_HEIGHT"
+	/>
+	
+	<Layer
+		File = "_bell gothic std black 20px"
+		Type = "BitmapText"
+		OnCommand = "%function(self)
+            self:x(SCREEN_RIGHT-SCREEN_WIDTH/6);
+			self:y(75);
+			self:settext('Leaderboards:');
+        end"
+	/>
+	
+	<Layer
+		File = "_bell gothic std black 20px"
+		Type = "BitmapText"
+		OnCommand = "%function(self)
+			local percent = ((table.getn(Rankings))*100)/PlayerMax;
+			self:x(SCREEN_CENTER_X);
+			self:y(SCREEN_BOTTOM-30);
+
+			if percent>=100 then
+				self:settext('Can advance to the next stage!');
+			end
+			Arrange();
+        end"
+	/>
+	
+	<Layer InitCommand="%function()
+        texts = {}
+        texts.create = table.getn(Rankings)
+    end" />
+    <Layer File="gen.xml" />
+    <Layer InitCommand="%function()
+        for i=1,table.getn(Rankings) do 
+            texts[i]:settext(tostring(Rankings[i]));
+            texts[i]:xy(SCREEN_RIGHT-50, 80+(25*i));
+            texts[i]:horizalign('right');
+			
+			if table.getn(Rankings) >= PlayerMax then
+				if i == 1 then
+					texts[i]:rainbow(1);
+				elseif tonumber(Rankings[i]) <= 0 then
+					texts[i]:diffuse(1,0,0,1);
+				else
+					texts[i]:diffuse(0,1,1,1);
+				end
+				-- Turn red the lower half
+				if i > math.ceil(table.getn(Rankings)/2) then
+					texts[i]:diffuse(1,0,0,1);
+				end
+				else
+					texts[i]:diffuse(1,1,1,1);
+				end
+			Arrange();
+        end
+    end" />
+	
+</children></ActorFrame>

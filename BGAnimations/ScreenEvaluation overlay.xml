@@ -1,0 +1,15 @@
+<ActorFrame> <children>
+	<Layer
+		Type = "ActorFrame"
+		InitCommand="%function(self)
+		--ITG Percent
+		local percentp1 = FormatPercentScore(STATSMAN:GetCurStageStats():GetPlayerStageStats(0):GetPercentDancePoints());
+		local percentp2 = FormatPercentScore(STATSMAN:GetCurStageStats():GetPlayerStageStats(1):GetPercentDancePoints());
+		if GAMESTATE:IsHumanPlayer(0) then
+			ScoreP1 = string.gsub(percentp1, '%%', '');
+		end
+		if GAMESTATE:IsHumanPlayer(1) then
+			ScoreP2 = string.gsub(percentp2, '%%', '');
+		end
+	end"/>
+</children> </ActorFrame>

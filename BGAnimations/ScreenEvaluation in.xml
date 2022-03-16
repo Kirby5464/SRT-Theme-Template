@@ -1,0 +1,10 @@
+<ActorFrame> <children>
+
+	<Layer
+		Type = "ActorFrame"
+		OffCommand="%function(self)
+			PushScores();
+		end"
+	/>
+	
+</children> </ActorFrame>

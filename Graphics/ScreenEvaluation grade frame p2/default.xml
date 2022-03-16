@@ -1,0 +1,11 @@
+<ActorFrame> <children>
+	<Layer Type="ActorFrame" OnCommand="x,128;y,-135"> <children>
+		<Layer Type="BitmapText" Font="_bell gothic std black 20px" Text="Fantastic"	OnCommand="y,32*0;zoom,1;horizalign,right;ShadowLength,4" />
+		<Layer Type="BitmapText" Font="_bell gothic std black 20px" Text="Excellent"	OnCommand="y,32*1;zoom,1;horizalign,right;ShadowLength,4" />
+		<Layer Type="BitmapText" Font="_bell gothic std black 20px" Text="Great"		OnCommand="y,32*2;zoom,1;horizalign,right;ShadowLength,4" />
+		<Layer Type="BitmapText" Font="_bell gothic std black 20px" Text="Decent"		OnCommand="y,32*3;zoom,1;horizalign,right;ShadowLength,4" />
+		<Layer Type="BitmapText" Font="_bell gothic std black 20px" Text="Way Off"	OnCommand="y,32*4;zoom,1;horizalign,right;ShadowLength,4" />
+		<Layer Type="BitmapText" Font="_bell gothic std black 20px" Text="Miss"		OnCommand="y,32*5;zoom,1;horizalign,right;ShadowLength,4" />
+	</children> </Layer>
+</children> </ActorFrame>
+

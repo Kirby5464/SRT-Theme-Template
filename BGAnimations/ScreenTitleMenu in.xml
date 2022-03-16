@@ -1,0 +1,10 @@
+<ActorFrame> <children>
+
+	<Layer
+		Type = "ActorFrame"
+		InitCommand="%function(self)
+			InitVars();
+		end"
+	/>
+	
+</children> </ActorFrame>

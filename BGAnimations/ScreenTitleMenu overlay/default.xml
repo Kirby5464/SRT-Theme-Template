@@ -1,0 +1,13 @@
+<ActorFrame><children>
+	
+	<Layer
+        Font="_bell gothic std black 20px"
+        Text="PRESS START TO BEGIN TOURNAMENT"
+        OnCommand="%function(self)
+        self:x(SCREEN_CENTER_X)
+        self:y(SCREEN_CENTER_Y)
+		self:zoom(1.5)
+        end"
+	/>
+	
+</children></ActorFrame>

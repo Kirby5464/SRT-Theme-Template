@@ -1,0 +1,9 @@
+<ActorFrame> <children>
+    <Layer File = "_bell gothic std black 20px" Type="BitmapText"
+        InitCommand="%function(self) 
+            table.insert(texts, self)
+            texts.create = texts.create - 1
+        end" 
+    />
+    <Layer Condition="texts.create > 0" File="gen.xml" />
+</children> </ActorFrame>
