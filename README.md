@@ -1,6 +1,6 @@
 # SRT-Theme-Template
 
-An actual SRT theme template. This used to be a theme of a scrapped SRT I made. Based on https://github.com/MadkaT182/Tournament.
+An actual SRT theme template made for NotITG. This used to be a theme of a scrapped SRT I made. Based on https://github.com/MadkaT182/Tournament.
 
 # How To Use:
 # When in title screen
